@@ -17,7 +17,7 @@ import { SpinCarousel } from "./spin-carousel";
 const heading =
   "text-[clamp(2.5rem,5.4vw,4.5rem)] leading-[1.1] tracking-[-0.035em]";
 const eyebrow = "text-sm uppercase tracking-wide";
-const body = "text-[15px] leading-relaxed text-neutral-600";
+const storyBody = "text-[15px] leading-relaxed text-white/85";
 
 function flight(x: string, w: string, from: string, to: string) {
   return { "--x": x, "--w": w, "--from": from, "--to": to } as CSSProperties;
@@ -87,11 +87,24 @@ export function Story() {
   return (
     <section
       id="about"
-      className="story scroll-mt-20 px-4 py-18 md:px-16 md:py-24"
+      className="story relative scroll-mt-20 bg-umber px-4 py-18 text-white md:px-16 md:py-24"
     >
-      <div className="story-stage grid grid-cols-12 items-start gap-x-4 gap-y-10 lg:gap-x-6">
+      {/* Sticky, so the backdrop stays put while the photos fly past. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="sticky top-0 h-svh">
+          <Image
+            src={story.background}
+            alt=""
+            fill
+            sizes="(min-aspect-ratio: 16/9) 100vw, 178vh"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/25" />
+        </div>
+      </div>
+      <div className="story-stage relative grid grid-cols-12 items-start gap-x-4 gap-y-10 lg:gap-x-6">
         <div className="story-heading order-first col-span-12 text-center lg:order-none lg:col-start-1 lg:row-start-2">
-          <p className={`${eyebrow} text-neutral-500`}>{story.eyebrow}</p>
+          <p className={`${eyebrow} text-white/75`}>{story.eyebrow}</p>
           <h2 className={`${heading} mt-4`}>
             <Words text={story.title} />
           </h2>
@@ -112,7 +125,7 @@ export function Story() {
           className="story-fly col-span-5 mt-16 aspect-[200/227] lg:col-span-2 lg:col-start-11 lg:row-start-1 lg:mt-0"
         />
         <p
-          className={`${body} story-text-a reveal col-span-12 max-w-xs lg:col-span-3 lg:col-start-4 lg:row-start-1 lg:self-center`}
+          className={`${storyBody} story-text-a reveal col-span-12 max-w-xs lg:col-span-3 lg:col-start-4 lg:row-start-1 lg:self-center`}
         >
           {story.first}
         </p>
@@ -139,11 +152,11 @@ export function Story() {
           className="story-fly hidden aspect-[4/5]"
         />
         <div className="story-text-b reveal col-span-12 max-w-xs lg:col-span-3 lg:col-start-10 lg:row-start-3">
-          <p className={body}>{story.second}</p>
-          <p className={`${body} mt-4`}>{story.third}</p>
+          <p className={storyBody}>{story.second}</p>
+          <p className={`${storyBody} mt-4`}>{story.third}</p>
           <a
             href="#services"
-            className="mt-6 inline-block border-b border-ink pb-1 text-sm uppercase tracking-wide transition-colors hover:border-umber hover:text-umber"
+            className="mt-6 inline-block border-b border-white pb-1 text-sm uppercase tracking-wide transition-colors hover:border-clay hover:text-clay"
           >
             Discover more
           </a>
@@ -346,9 +359,13 @@ export function SiteFooter() {
       <div className="-mx-4 mb-12 border-t border-white/10 md:-mx-16" />
       <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_2fr]">
         <div>
-          <p className="text-base font-medium uppercase tracking-[0.14em] text-clay">
-            AAQZ Interiors
-          </p>
+          <Image
+            src="/images/brand/zs-logo.png"
+            alt="ZS Design Studio, Designing Timeless Spaces"
+            width={655}
+            height={720}
+            className="h-40 w-auto"
+          />
           <p className="mt-6 max-w-xs text-2xl leading-snug tracking-tight text-white">
             {hero.slides[0].title}
           </p>
@@ -411,7 +428,7 @@ export function SiteFooter() {
       </div>
 
       <p className="mt-12 border-t border-white/10 pt-6">
-        © 2026 AAQZ Interiors. All rights reserved.
+        © 2026 ZS Design Studio. All rights reserved.
       </p>
     </footer>
   );

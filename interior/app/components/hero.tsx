@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { hero, sectors } from "../content";
+import { hero } from "../content";
 
 const SLIDE_DURATION = 5000;
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
@@ -75,12 +75,6 @@ export function Hero() {
       />
 
       <div className="relative z-40 flex flex-1 flex-col px-4 pb-6 pt-21 md:px-16 md:pb-15 md:pt-[158px]">
-        <ul className="hidden justify-between text-sm uppercase tracking-wide md:flex">
-          {sectors.map((sector) => (
-            <li key={sector}>{sector}</li>
-          ))}
-        </ul>
-
         <div className="mt-auto">
           <h1
             key={active}

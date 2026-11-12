@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { navigation } from "../content";
 
@@ -34,12 +35,18 @@ export function SiteNav() {
       className="fixed left-1/2 top-4 z-50 w-[calc(100%-2rem)] max-w-[400px] -translate-x-1/2 rounded-lg bg-cocoa/75 text-white ring-1 ring-white/15 backdrop-blur-md intro-drop"
     >
       <div className="flex h-12 items-center justify-between pl-[18px] pr-1.5">
-        <a
-          href="#top"
-          onClick={close}
-          className="text-sm font-medium uppercase tracking-[0.14em]"
-        >
-          AAQZ <span className="text-clay">Interiors</span>
+        <a href="#top" onClick={close} className="flex items-center gap-3">
+          <Image
+            src="/images/brand/zs-mark.png"
+            alt="ZS"
+            width={167}
+            height={240}
+            preload
+            className="h-8 w-auto"
+          />
+          <span className="font-display text-sm font-semibold uppercase tracking-[0.16em] text-gold">
+            Design Studio
+          </span>
         </a>
         <button
           type="button"

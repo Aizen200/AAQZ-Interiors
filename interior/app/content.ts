@@ -51,13 +51,14 @@ export const hero = {
 
 export const story = {
   eyebrow: "Our Story",
-  title: "Welcome To AAQZ Interior",
+  title: "Welcome To ZS Design Studio",
   first:
     "We take pride in our reputation for creating spectacular interiors for commercial and residential customers.",
   second:
     "From the moment that you meet with us to discuss your ideas, we are able to turn your vision into reality.",
   third:
     "We love what we do, so much that we want to share our passion with you by sharing the best interior design services we offer.",
+  background: "/images/story-background.jpg",
   images: {
     tall: photo("story-basin"),
     small: photo("story-console"),

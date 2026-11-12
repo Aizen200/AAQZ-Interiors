@@ -8,7 +8,9 @@
   --color-umber: #6d4c3f;
   --color-cocoa: #2f201b;
   --color-ink: #0b0503;
+  --color-gold: #d1a971;
   --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-cinzel);
 }
 
 :root {
