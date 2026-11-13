@@ -138,15 +138,17 @@ body {
   display: inline-block;
 }
 
+/* Phones get a stronger perspective so the cards still open up on a narrow screen. */
 .spin-track {
-  --card: 170px;
-  perspective: calc(var(--card) * 4.615);
+  --card: 150px;
+  perspective: calc(var(--card) * 2.4);
   transform-style: preserve-3d;
 }
 
 @media (min-width: 768px) {
   .spin-track {
     --card: 260px;
+    perspective: calc(var(--card) * 4.615);
   }
 }
 

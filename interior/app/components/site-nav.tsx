@@ -83,7 +83,7 @@ export function SiteNav() {
               <a
                 href={item.href}
                 onClick={close}
-                className="block py-2 transition-colors hover:text-clay"
+                className="block py-2.5 transition-colors hover:text-clay"
               >
                 {item.label}
               </a>
@@ -94,7 +94,7 @@ export function SiteNav() {
                       <a
                         href={child.href}
                         onClick={close}
-                        className="block py-1.5 transition-colors hover:text-clay"
+                        className="block py-2.5 transition-colors hover:text-clay"
                       >
                         • {child.label}
                       </a>

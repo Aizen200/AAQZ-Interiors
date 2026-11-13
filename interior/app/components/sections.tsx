@@ -92,13 +92,15 @@ export function Story() {
       {/* Sticky, so the backdrop stays put while the photos fly past. */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="sticky top-0 h-svh">
-          <Image
-            src={story.background}
-            alt=""
-            fill
-            sizes="(min-aspect-ratio: 16/9) 100vw, 178vh"
-            className="object-cover"
-          />
+          <div className="absolute inset-0">
+            <Image
+              src={story.background}
+              alt=""
+              fill
+              sizes="(min-aspect-ratio: 16/9) 100vw, 178vh"
+              className="object-cover"
+            />
+          </div>
           <div className="absolute inset-0 bg-black/25" />
         </div>
       </div>
@@ -156,7 +158,7 @@ export function Story() {
           <p className={`${storyBody} mt-4`}>{story.third}</p>
           <a
             href="#services"
-            className="mt-6 inline-block border-b border-white pb-1 text-sm uppercase tracking-wide transition-colors hover:border-clay hover:text-clay"
+            className="mt-3 inline-block border-b border-white pb-1 pt-3 text-sm uppercase tracking-wide transition-colors hover:border-clay hover:text-clay"
           >
             Discover more
           </a>
@@ -327,7 +329,7 @@ export function Values() {
             <li
               key={value.title}
               style={{ top: `${96 + index * 16}px` }}
-              className="flex min-h-64 flex-col justify-between gap-12 rounded-lg bg-white p-6 shadow-[0_-8px_24px_rgba(47,32,27,0.05)] md:p-8 lg:sticky lg:min-h-[340px]"
+              className="flex min-h-64 flex-col justify-between gap-12 rounded-lg bg-white p-6 shadow-[0_-8px_24px_rgba(47,32,27,0.05)] sticky md:p-8 lg:min-h-[340px]"
             >
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-[clamp(1.75rem,2.8vw,2.5rem)] leading-tight tracking-tight">
@@ -349,7 +351,7 @@ export function Values() {
 export function SiteFooter() {
   const columnTitle = "text-sm uppercase tracking-wide text-white";
   const link =
-    "transition-colors duration-400 ease-[cubic-bezier(0.44,0,0.56,1)] hover:text-white";
+    "inline-block py-2 transition-colors duration-400 ease-[cubic-bezier(0.44,0,0.56,1)] hover:text-white";
 
   return (
     <footer
@@ -357,8 +359,8 @@ export function SiteFooter() {
       className="relative -mt-px scroll-mt-20 bg-cocoa px-4 pb-7.5 text-sm text-white/64 md:px-16"
     >
       <div className="-mx-4 mb-12 border-t border-white/10 md:-mx-16" />
-      <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_2fr]">
-        <div>
+      <div className="grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-[2fr_1fr_1fr_2fr]">
+        <div className="col-span-2 lg:col-span-1">
           <Image
             src="/images/brand/zs-logo.png"
             alt="ZS Design Studio, Designing Timeless Spaces"
@@ -373,7 +375,7 @@ export function SiteFooter() {
 
         <div>
           <h2 className={columnTitle}>Index</h2>
-          <ul className="mt-6 space-y-4 uppercase">
+          <ul className="mt-4 uppercase">
             {navigation.map((item) => (
               <li key={item.href}>
                 <a href={item.href} className={link}>
@@ -386,7 +388,7 @@ export function SiteFooter() {
 
         <div>
           <h2 className={columnTitle}>Services</h2>
-          <ul className="mt-6 space-y-4 uppercase">
+          <ul className="mt-4 uppercase">
             {sectors.map((sector) => (
               <li key={sector}>
                 <a href="#services" className={link}>
@@ -397,9 +399,9 @@ export function SiteFooter() {
           </ul>
         </div>
 
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <h2 className={columnTitle}>Contact Us</h2>
-          <ul className="mt-6 space-y-4">
+          <ul className="mt-4">
             {contact.phones.map((phone) => (
               <li key={phone.href}>
                 <a href={phone.href} className={link}>
@@ -412,13 +414,13 @@ export function SiteFooter() {
                 {contact.email}
               </a>
             </li>
-            <li className="max-w-xs leading-relaxed">{contact.address}</li>
+            <li className="max-w-xs py-2 leading-relaxed">{contact.address}</li>
             <li>
               <a
                 href={contact.directions}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block border-b border-white/40 pb-0.5 uppercase tracking-wide text-white transition-colors hover:border-white"
+                className="mt-2 inline-block border-b border-white/40 pb-0.5 pt-2 uppercase tracking-wide text-white transition-colors hover:border-white"
               >
                 Get directions
               </a>

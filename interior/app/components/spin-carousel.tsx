@@ -26,6 +26,8 @@ export function SpinCarousel({ images }: { images: string[] }) {
     let dragX: number | null = null;
     let pointer: { x: number; y: number } | null = null;
     let open: Element | null = null;
+    let pinned: Element | null = null; // A card opened by a tap, on touch screens.
+    let dragStart: number | null = null;
     let openedAt = 0;
 
     const spacing = () => items[0].offsetWidth * SPACING;
@@ -46,7 +48,7 @@ export function SpinCarousel({ images }: { images: string[] }) {
       const under =
         pointer &&
         document.elementFromPoint(pointer.x, pointer.y)?.closest(".spin-face");
-      const next = under && track.contains(under) ? under : null;
+      const next = under && track.contains(under) ? under : pinned;
       if (next === open) return;
       // Let a card finish flipping first, or it can swing off the pointer and flicker.
       if (open && pointer && performance.now() - openedAt < FLIP_TIME) return;
@@ -56,33 +58,60 @@ export function SpinCarousel({ images }: { images: string[] }) {
       openedAt = performance.now();
     };
 
-    const onEnter = () => (hovered = true);
-    const onLeave = () => {
+    // Touch screens have no hover, so a tap opens a card and keeps it open.
+    const tap = (event: PointerEvent) => {
+      const face = document
+        .elementFromPoint(event.clientX, event.clientY)
+        ?.closest(".spin-face");
+      pinned = face && face !== pinned ? face : null;
+      updateOpen();
+    };
+
+    const onEnter = (event: PointerEvent) => {
+      if (event.pointerType === "mouse") hovered = true;
+    };
+    const onLeave = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse") return;
       hovered = false;
       pointer = null;
       updateOpen();
     };
     const onDown = (event: PointerEvent) => {
-      pointer = { x: event.clientX, y: event.clientY };
-      dragX = event.clientX;
+      if (event.pointerType === "mouse") {
+        pointer = { x: event.clientX, y: event.clientY };
+      }
+      dragX = dragStart = event.clientX;
       track.setPointerCapture(event.pointerId);
     };
     const onMove = (event: PointerEvent) => {
-      pointer = { x: event.clientX, y: event.clientY };
-      updateOpen();
+      if (event.pointerType === "mouse") {
+        pointer = { x: event.clientX, y: event.clientY };
+        updateOpen();
+      }
       if (dragX === null) return;
       offset += (event.clientX - dragX) / spacing();
       dragX = event.clientX;
       place();
     };
-    const onUp = () => (dragX = null);
+    const onUp = (event: PointerEvent) => {
+      const moved = dragStart === null ? 0 : Math.abs(event.clientX - dragStart);
+      if (event.pointerType !== "mouse" && moved < 8) tap(event);
+      dragX = dragStart = null;
+    };
+    const onCancel = () => (dragX = dragStart = null);
+    const onOutside = (event: PointerEvent) => {
+      if (!pinned || track.contains(event.target as Node)) return;
+      pinned = null;
+      updateOpen();
+    };
 
     track.addEventListener("pointerenter", onEnter);
     track.addEventListener("pointerleave", onLeave);
     track.addEventListener("pointerdown", onDown);
     track.addEventListener("pointermove", onMove);
     track.addEventListener("pointerup", onUp);
-    track.addEventListener("pointercancel", onUp);
+    track.addEventListener("pointercancel", onCancel);
+    window.addEventListener("pointerdown", onOutside);
     window.addEventListener("resize", place);
     place();
 
@@ -119,7 +148,8 @@ export function SpinCarousel({ images }: { images: string[] }) {
       track.removeEventListener("pointerdown", onDown);
       track.removeEventListener("pointermove", onMove);
       track.removeEventListener("pointerup", onUp);
-      track.removeEventListener("pointercancel", onUp);
+      track.removeEventListener("pointercancel", onCancel);
+      window.removeEventListener("pointerdown", onOutside);
       window.removeEventListener("resize", place);
     };
   }, []);
