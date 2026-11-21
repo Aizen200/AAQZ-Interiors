@@ -86,12 +86,6 @@ export function Hero() {
           <div className="intro-drop mt-10 flex lg:justify-end">
             <div className="flex w-full gap-1 sm:w-auto">
               <a
-                href="#about"
-                className="flex h-14 flex-1 items-center justify-center sm:flex-none bg-white/20 px-4 whitespace-nowrap uppercase sm:px-8 backdrop-blur-md transition-colors hover:bg-white/30"
-              >
-                Scroll
-              </a>
-              <a
                 href="#projects"
                 className="flex h-14 flex-1 items-center justify-center sm:flex-none bg-white px-4 whitespace-nowrap uppercase sm:px-8 text-ink transition-colors hover:bg-clay"
               >

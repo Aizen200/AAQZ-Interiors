@@ -75,21 +75,33 @@ export const services = {
     {
       title: "Architecture & Interior",
       text: "When it comes to your home, you want to feel at home and enjoy the comfort of living in a home that fits your lifestyle.",
+      details: [
+        "For many people, this means choosing a style that matches their tastes and preferences. But even when designing for yourself, some features are more important than others. This can make it difficult to know what extra features you should prioritize —and which ones you should ditch. So here you have us.",
+      ],
       image: photo("service-kitchen"),
     },
     {
       title: "Project Planning",
       text: "From the moment that you meet with us to discuss your ideas, we are able to turn your vision into reality.",
+      details: [
+        "The design of the house is a matter of significant importance when it is necessary to please a number of people. The choice of the interior designers for residents should meet the expectations and requirements of the owners, as well as take into account such factors as location, maintenance costs and space available in the apartment or house. The quality of form and colours chosen will also depend on many other factors such as family traditions, preferences in general style and personal habits.",
+      ],
       image: photo("service-joinery"),
     },
     {
       title: "Product Design",
       text: "From elegant to modern, modern and contemporary style, designers are a necessary part of your home.",
+      details: [
+        "Your home is your castle, yet most of the time it's in disarray. You will find that having the right designer at hand is not just beneficial to you but also your family as well.",
+      ],
       image: photo("service-desk"),
     },
     {
       title: "Customer Solutions",
       text: "We've great range of professionals & expertise who will guide you for the best designs which suits your homes.",
+      details: [
+        "If you're looking for the best interior designers in your area, you've come to the right place. Our online database is one of the largest we've worked on. We've been able to gather together all of the businesses who specialize in residential projects. You'll certainly find a great range of professionals with a wide variety of experience and skill sets. who will guide you for the best designs which suits your homes.",
+      ],
       image: photo("service-cabinet"),
     },
   ],

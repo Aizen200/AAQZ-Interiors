@@ -304,3 +304,13 @@ body {
     display: none;
   }
 }
+
+/* Mobile photo reel: swipeable, with the scrollbar hidden. */
+.reel {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.reel::-webkit-scrollbar {
+  display: none;
+}

@@ -12,6 +12,8 @@ import {
   story,
   values,
 } from "../content";
+import { ReelGallery } from "./reel-gallery";
+import { ServicesList } from "./services-list";
 import { SpinCarousel } from "./spin-carousel";
 
 const heading =
@@ -179,31 +181,7 @@ export function Services() {
         <h2 className="mt-3 text-2xl tracking-tight">{services.title}</h2>
       </div>
 
-      <ol className="border-b border-white/10">
-        {services.items.map((service, index) => (
-          <li
-            key={service.title}
-            className="group grid gap-4 border-t border-white/10 px-4 py-6 md:px-16 lg:grid-cols-[80px_minmax(0,320px)_1fr_auto] lg:items-center lg:gap-8 lg:py-7.5"
-          >
-            <span className="text-xl text-white/50">/0{index + 1}</span>
-            <p className="order-last text-[15px] leading-relaxed text-white/70 lg:order-none">
-              {service.text}
-            </p>
-            <div className="relative hidden h-24 overflow-hidden opacity-0 transition-opacity duration-500 group-hover:opacity-100 xl:block xl:w-40 xl:justify-self-end">
-              <Image
-                src={service.image}
-                alt=""
-                fill
-                sizes="160px"
-                className="object-cover"
-              />
-            </div>
-            <h3 className="text-[clamp(2rem,4.2vw,3.75rem)] leading-tight tracking-[-0.03em] reveal text-white/80 transition-colors duration-300 group-hover:text-white lg:text-right">
-              {service.title}
-            </h3>
-          </li>
-        ))}
-      </ol>
+      <ServicesList items={services.items} />
     </section>
   );
 }
@@ -269,7 +247,10 @@ export function Elements() {
         </p>
       </div>
 
-      <div className="mt-12 md:mt-18">
+      <div className="mt-12 md:hidden">
+        <ReelGallery images={elements.images} />
+      </div>
+      <div className="mt-18 hidden md:block">
         <SpinCarousel images={elements.images} />
       </div>
     </section>
