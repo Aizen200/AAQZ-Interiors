@@ -46,7 +46,7 @@ export function SectionIntro({
 
   const text = description && (
     <p
-      className={`reveal max-w-md text-base leading-relaxed md:text-lg ${body} ${
+      className={`reveal max-w-md text-pretty text-base leading-relaxed md:text-lg ${body} ${
         layout === "center" ? "mx-auto" : ""
       }`}
     >

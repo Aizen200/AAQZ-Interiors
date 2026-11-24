@@ -11,7 +11,7 @@ const { items } = testimonials;
 const slides = [...items, ...items, ...items];
 
 const arrow =
-  "grid size-11 cursor-pointer place-items-center rounded bg-white transition-colors hover:bg-clay";
+  "grid size-11 cursor-pointer place-items-center rounded bg-sand transition-colors hover:bg-clay";
 
 export function Testimonials() {
   const trackRef = useRef<HTMLUListElement>(null);
@@ -65,12 +65,12 @@ export function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="pb-18 md:pb-24">
+    <section id="testimonials" className="bg-sand pb-18 md:pb-24">
       <SectionIntro
         layout="center"
         title={testimonials.title}
         description={testimonials.description}
-        className="px-4 pb-12 md:pb-18"
+        className="px-4 pb-10 md:pb-12"
       />
 
       <div
@@ -89,7 +89,7 @@ export function Testimonials() {
               }
               className="flex w-(--slide) shrink-0 snap-center"
             >
-              <figure className="flex min-h-[440px] w-full flex-col justify-between gap-10 rounded-lg bg-sand p-6 md:min-h-[500px] md:p-10">
+              <figure className="flex min-h-[440px] w-full flex-col justify-between gap-10 rounded-lg bg-white p-6 md:min-h-[500px] md:p-10">
                 <span
                   aria-hidden
                   className="h-14 font-serif text-[6rem] font-bold leading-none text-clay"

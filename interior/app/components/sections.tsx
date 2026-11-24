@@ -169,7 +169,7 @@ export function Services() {
         label={services.eyebrow}
         title={services.title}
         description={services.description}
-        className="px-4 pb-12 md:px-16 md:pb-16"
+        className="px-4 pb-10 md:px-16 md:pb-12"
       />
 
       <ServicesList items={services.items} />
@@ -187,7 +187,7 @@ export function Projects() {
         label={projects.eyebrow}
         title={projects.title}
         description={projects.description}
-        className="px-4 pb-12 md:pb-18 lg:sticky lg:top-[30vh]"
+        className="px-4 pb-10 md:pb-12 lg:sticky lg:top-[30vh]"
       />
 
       <div className="relative z-10 grid grid-cols-1 gap-2 bg-sand px-4 md:gap-4 md:px-16 lg:grid-cols-3">
@@ -228,7 +228,7 @@ export function Projects() {
 
 export function Elements() {
   return (
-    <section id="elements" className="overflow-x-clip pb-18 md:pb-24">
+    <section id="elements" className="overflow-x-clip bg-sand pb-18 md:pb-24">
       <div className="mx-auto w-fit max-w-full px-4">
         <p className={`${eyebrow} text-neutral-500`}>{elements.eyebrow}</p>
         <h2 className={`${heading} mt-4`}>
