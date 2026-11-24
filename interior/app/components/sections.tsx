@@ -239,10 +239,10 @@ export function Elements() {
         </p>
       </div>
 
-      <div className="mt-12 md:hidden">
+      <div className="mt-10 md:hidden">
         <ReelGallery images={elements.images} />
       </div>
-      <div className="mt-18 hidden md:block">
+      <div className="mt-12 hidden md:block">
         <SpinCarousel images={elements.images} />
       </div>
     </section>
