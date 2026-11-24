@@ -13,6 +13,7 @@ import {
 import { RevealObserver } from "./components/reveal-observer";
 import { SiteNav } from "./components/site-nav";
 import { Testimonials } from "./components/testimonials";
+import { testimonials } from "./content";
 
 export default function Home() {
   return (
@@ -28,7 +29,7 @@ export default function Home() {
         <Projects />
         <Values />
         <Elements />
-        <Testimonials />
+        {testimonials.items.length > 0 && <Testimonials />}
         <CallToAction />
       </main>
       <SiteFooter />

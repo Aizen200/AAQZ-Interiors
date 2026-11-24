@@ -190,7 +190,7 @@ export function Projects() {
   const { octacrest, oberoi } = projects;
 
   return (
-    <section id="projects" className="scroll-mt-20 bg-sand pb-1 pt-18 md:pt-24">
+    <section id="projects" className="scroll-mt-20 bg-sand pb-18 pt-18 md:pb-24 md:pt-24">
       <div className="px-4 pb-12 text-center md:pb-18 lg:sticky lg:top-[30vh]">
         <p className={`${eyebrow} text-neutral-500`}>{projects.eyebrow}</p>
         <h2 className={`${heading} mt-4`}>
@@ -198,34 +198,34 @@ export function Projects() {
         </h2>
       </div>
 
-      <div className="relative z-10 grid grid-cols-1 gap-1 bg-sand px-1 lg:grid-cols-3">
-        <article className="grow group relative aspect-[4/3] overflow-hidden lg:col-span-3 lg:aspect-[16/7]">
+      <div className="relative z-10 grid grid-cols-1 gap-2 bg-sand px-4 md:gap-4 md:px-16 lg:grid-cols-3">
+        <article className="grow group relative aspect-[4/3] overflow-hidden rounded-lg lg:col-span-3 lg:aspect-[16/7]">
           <Image
             src={octacrest.image}
             alt={`${octacrest.name} ${octacrest.location} living room`}
             fill
-            sizes="(min-width: 1024px) 100vw, 134vw"
+            sizes="(min-width: 1024px) 92vw, 134vw"
             className="object-cover object-[50%_80%] transition-transform duration-700 group-hover:scale-[1.03]"
           />
           <ProjectCaption {...octacrest} />
         </article>
 
-        <article className="grow group relative aspect-[4/3] overflow-hidden lg:col-span-2 lg:aspect-auto">
+        <article className="grow group relative aspect-[4/3] overflow-hidden rounded-lg lg:col-span-2 lg:aspect-auto">
           <Image
             src={oberoi.image}
             alt={`${oberoi.name} ${oberoi.location} living room`}
             fill
-            sizes="(min-width: 1024px) 80vw, 134vw"
+            sizes="(min-width: 1024px) 62vw, 134vw"
             className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
           />
           <ProjectCaption {...oberoi} />
         </article>
-        <div className="grow relative hidden aspect-[3/4] overflow-hidden lg:block">
+        <div className="grow relative hidden aspect-[3/4] overflow-hidden rounded-lg lg:block">
           <Image
             src={oberoi.detail}
             alt={`Leather sofa against a dark stone wall at ${oberoi.name} ${oberoi.location}`}
             fill
-            sizes="80vw"
+            sizes="(min-width: 1024px) 30vw, 80vw"
             className="object-cover object-[75%_50%]"
           />
         </div>
@@ -310,7 +310,7 @@ export function Values() {
             <li
               key={value.title}
               style={{ top: `${96 + index * 16}px` }}
-              className="flex min-h-64 flex-col justify-between gap-12 rounded-lg bg-white p-6 shadow-[0_-8px_24px_rgba(47,32,27,0.05)] sticky md:p-8 lg:min-h-[340px]"
+              className="flex min-h-64 flex-col justify-between gap-8 rounded-lg bg-white p-6 shadow-[0_-8px_24px_rgba(47,32,27,0.05)] sticky md:p-8 lg:min-h-[340px]"
             >
               <div className="flex items-start justify-between gap-4">
                 <h3 className="text-[clamp(1.75rem,2.8vw,2.5rem)] leading-tight tracking-tight">
@@ -318,6 +318,16 @@ export function Values() {
                 </h3>
                 <span className="text-2xl text-neutral-400">/0{index + 1}</span>
               </div>
+              <ul className="flex flex-wrap gap-2">
+                {value.points.map((point) => (
+                  <li
+                    key={point}
+                    className="rounded-full border border-neutral-200 bg-sand/60 px-3.5 py-1.5 text-sm text-neutral-700"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
               <p className="max-w-md text-base leading-relaxed text-neutral-600">
                 {value.text}
               </p>

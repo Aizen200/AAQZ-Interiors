@@ -1,5 +1,5 @@
 // All copy is taken from the aaqzinteriors.com homepage, in the homepage's order.
-// The exceptions are `contact` (its Contact Us page) and `testimonials`. Photos
+// The exceptions are `contact` (its Contact Us page) and `values.points`. Photos
 // under /images/aaqz are AAQZ's own, from its site. Those under /images/placeholder
 // are temporary stand-ins from the Kairn template: replace them before going live.
 const photo = (name: string) => `/images/placeholder/${name}.jpg`;
@@ -138,18 +138,38 @@ export const values = {
     {
       title: "Illustration",
       text: "The purpose of illustration is to communicate a design concept or idea to clients, builders, or other stakeholders involved in a project.",
+      points: [
+        "Concept sketches & mood boards",
+        "2D floor plans & elevations",
+        "Material & colour palettes",
+      ],
     },
     {
       title: "Interior Design",
       text: "It involves selecting and arranging furnishings, color schemes, lighting, and other decorative elements to create a functional and visually appealing space.",
+      points: [
+        "Space planning & furniture layouts",
+        "Lighting & colour schemes",
+        "Custom furniture & decor selection",
+      ],
     },
     {
       title: "Architecture",
       text: "Architects are responsible for designing the overall layout of a building, including the structural framework, the materials used, and the building systems.",
+      points: [
+        "Layout & structural planning",
+        "Material specification",
+        "Coordination with builders & consultants",
+      ],
     },
     {
       title: "3D Modeling",
       text: "3D modeling is a powerful tool that can help designers to create more accurate, efficient, and visually appealing designs.",
+      points: [
+        "Photorealistic 3D renders",
+        "Walkthroughs before work begins",
+        "Faster approvals with fewer changes on site",
+      ],
     },
   ],
 };
@@ -172,28 +192,13 @@ export const elements = {
   ],
 };
 
-// Copied as-is from the site's About page, where this same lorem ipsum quote and
-// name repeat five times. Replace with genuine client quotes before going live.
-export const testimonials = {
+// Real client quotes only. The section stays hidden while this list is empty.
+// To add one, copy this shape (ask the client before using their name):
+//   { quote: "What the client said…", name: "Client name", role: "Project, e.g. 3BHK, Goregaon" },
+export const testimonials: {
+  title: string;
+  items: { quote: string; name: string; role: string }[];
+} = {
   title: "What People Say",
-  items: [
-    {
-      quote:
-        "Ipsum dolor sit amet, consectetur adipiscing elit. Fringilla vel tincidunt ipsum ac. Nam at et id leo pulvinar egestas mi lorem. Adipiscing felis, vel faucibus in. Hendrerit viverra elementum venenatis pellentesque pellentesque ornare",
-      name: "Helena Gibbson",
-      role: "Finance Manager",
-    },
-    {
-      quote:
-        "Ipsum dolor sit amet, consectetur adipiscing elit. Fringilla vel tincidunt ipsum ac. Nam at et id leo pulvinar egestas mi lorem. Adipiscing felis, vel faucibus in. Hendrerit viverra elementum venenatis pellentesque pellentesque ornare",
-      name: "Helena Gibbson",
-      role: "Finance Manager",
-    },
-    {
-      quote:
-        "Ipsum dolor sit amet, consectetur adipiscing elit. Fringilla vel tincidunt ipsum ac. Nam at et id leo pulvinar egestas mi lorem. Adipiscing felis, vel faucibus in. Hendrerit viverra elementum venenatis pellentesque pellentesque ornare",
-      name: "Helena Gibbson",
-      role: "Finance Manager",
-    },
-  ],
+  items: [],
 };
