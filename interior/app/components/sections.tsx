@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Fragment, type CSSProperties } from "react";
+import { type CSSProperties } from "react";
 import {
   callToAction,
   contact,
@@ -13,26 +13,14 @@ import {
   values,
 } from "../content";
 import { ReelGallery } from "./reel-gallery";
+import { SectionIntro, Words, eyebrow, heading } from "./section-intro";
 import { ServicesList } from "./services-list";
 import { SpinCarousel } from "./spin-carousel";
 
-const heading =
-  "text-[clamp(2.5rem,5.4vw,4.5rem)] leading-[1.1] tracking-[-0.035em]";
-const eyebrow = "text-sm uppercase tracking-wide";
 const storyBody = "text-[15px] leading-relaxed text-white/85";
 
 function flight(x: string, w: string, from: string, to: string) {
   return { "--x": x, "--w": w, "--from": from, "--to": to } as CSSProperties;
-}
-
-function Words({ text }: { text: string }) {
-  return text.split(" ").map((word, index) => (
-    <Fragment key={index}>
-      <span className="reveal-word" style={{ "--i": index } as CSSProperties}>
-        {word}
-      </span>{" "}
-    </Fragment>
-  ));
 }
 
 function Photo({
@@ -176,10 +164,13 @@ export function Services() {
       id="services"
       className="scroll-mt-20 bg-cocoa py-18 text-white md:py-24"
     >
-      <div className="px-4 pb-7.5 md:px-16">
-        <p className={`${eyebrow} text-white/60`}>{services.eyebrow}</p>
-        <h2 className="mt-3 text-2xl tracking-tight">{services.title}</h2>
-      </div>
+      <SectionIntro
+        dark
+        label={services.eyebrow}
+        title={services.title}
+        description={services.description}
+        className="px-4 pb-12 md:px-16 md:pb-16"
+      />
 
       <ServicesList items={services.items} />
     </section>
@@ -190,13 +181,14 @@ export function Projects() {
   const { octacrest, oberoi } = projects;
 
   return (
-    <section id="projects" className="scroll-mt-20 bg-sand pb-18 pt-18 md:pb-24 md:pt-24">
-      <div className="px-4 pb-12 text-center md:pb-18 lg:sticky lg:top-[30vh]">
-        <p className={`${eyebrow} text-neutral-500`}>{projects.eyebrow}</p>
-        <h2 className={`${heading} mt-4`}>
-          <Words text={projects.title} />
-        </h2>
-      </div>
+    <section id="projects" className="scroll-mt-20 bg-sand pt-18 md:pt-24">
+      <SectionIntro
+        layout="center"
+        label={projects.eyebrow}
+        title={projects.title}
+        description={projects.description}
+        className="px-4 pb-12 md:pb-18 lg:sticky lg:top-[30vh]"
+      />
 
       <div className="relative z-10 grid grid-cols-1 gap-2 bg-sand px-4 md:gap-4 md:px-16 lg:grid-cols-3">
         <article className="grow group relative aspect-[4/3] overflow-hidden rounded-lg lg:col-span-3 lg:aspect-[16/7]">
@@ -236,7 +228,7 @@ export function Projects() {
 
 export function Elements() {
   return (
-    <section id="elements" className="overflow-x-clip py-18 md:py-24">
+    <section id="elements" className="overflow-x-clip pb-18 md:pb-24">
       <div className="mx-auto w-fit max-w-full px-4">
         <p className={`${eyebrow} text-neutral-500`}>{elements.eyebrow}</p>
         <h2 className={`${heading} mt-4`}>
@@ -298,12 +290,13 @@ export function Values() {
   return (
     <section id="skills" className="bg-sand px-4 py-18 md:px-16 md:py-24">
       <div className="grid gap-12 lg:grid-cols-2 lg:gap-6">
-        <div className="lg:sticky lg:top-24 lg:self-start">
-          <p className={`${eyebrow} text-neutral-500`}>{values.eyebrow}</p>
-          <h2 className={`${heading} mt-4 max-w-lg`}>
-            <Words text={values.title} />
-          </h2>
-        </div>
+        <SectionIntro
+          layout="stack"
+          label={values.eyebrow}
+          title={values.title}
+          description={values.description}
+          className="lg:sticky lg:top-24 lg:self-start lg:pr-12"
+        />
 
         <ol className="flex flex-col gap-4 lg:gap-6">
           {values.items.map((value, index) => (

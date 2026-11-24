@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type CSSProperties } from "react";
 import { testimonials } from "../content";
+import { SectionIntro } from "./section-intro";
 
 const { items } = testimonials;
 
@@ -64,12 +65,13 @@ export function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-18 md:py-24">
-      <div className="px-4 pb-9 text-center md:pb-15">
-        <h2 className="reveal text-[clamp(2.5rem,5.4vw,4.5rem)] leading-[1.1] tracking-[-0.035em]">
-          {testimonials.title}
-        </h2>
-      </div>
+    <section id="testimonials" className="pb-18 md:pb-24">
+      <SectionIntro
+        layout="center"
+        title={testimonials.title}
+        description={testimonials.description}
+        className="px-4 pb-12 md:pb-18"
+      />
 
       <div
         className="relative [--slide:88vw] md:[--slide:min(52vw,720px)]"

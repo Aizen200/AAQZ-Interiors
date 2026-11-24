@@ -1,5 +1,5 @@
 // All copy is taken from the aaqzinteriors.com homepage, in the homepage's order.
-// The exceptions are `contact` (its Contact Us page) and `values.points`. Photos
+// The exceptions are `contact` (its Contact Us page) `values.points` and every `description`. Photos
 // under /images/aaqz are AAQZ's own, from its site. Those under /images/placeholder
 // are temporary stand-ins from the Kairn template: replace them before going live.
 const photo = (name: string) => `/images/placeholder/${name}.jpg`;
@@ -71,6 +71,8 @@ export const story = {
 export const services = {
   eyebrow: "What Can We Offer",
   title: "Our Services",
+  description:
+    "From the first idea to the final finish, we plan, design and deliver spaces for homes, hotels, restaurants, offices and banks.",
   items: [
     {
       title: "Architecture & Interior",
@@ -110,6 +112,8 @@ export const services = {
 export const projects = {
   eyebrow: "Living Room",
   title: "Our Project",
+  description:
+    "A look at some of the homes we have designed across Mumbai, from Kandivali to Goregaon.",
   octacrest: {
     name: "Octacrest",
     location: "Lokhandwala Kandivali",
@@ -134,6 +138,8 @@ export const callToAction = {
 export const values = {
   eyebrow: "Our Skills",
   title: "The Core Company Values",
+  description:
+    "The skills we bring to every project, so you can see your space clearly before any work begins.",
   items: [
     {
       title: "Illustration",
@@ -192,13 +198,33 @@ export const elements = {
   ],
 };
 
-// Real client quotes only. The section stays hidden while this list is empty.
-// To add one, copy this shape (ask the client before using their name):
-//   { quote: "What the client said…", name: "Client name", role: "Project, e.g. 3BHK, Goregaon" },
+// PLACEHOLDERS: swap these for real client quotes (ask before using a name).
+// Shape: { quote: "What the client said", name: "Client name", role: "3BHK, Goregaon" }
 export const testimonials: {
   title: string;
+  description: string;
   items: { quote: string; name: string; role: string }[];
 } = {
   title: "What People Say",
-  items: [],
+  description: "Kind words from the people whose spaces we have designed.",
+  items: [
+    {
+      quote:
+        "Client review coming soon. This space is kept for feedback from the families and businesses we have designed for.",
+      name: "Client name",
+      role: "Project, Location",
+    },
+    {
+      quote:
+        "Client review coming soon. This space is kept for feedback from the families and businesses we have designed for.",
+      name: "Client name",
+      role: "Project, Location",
+    },
+    {
+      quote:
+        "Client review coming soon. This space is kept for feedback from the families and businesses we have designed for.",
+      name: "Client name",
+      role: "Project, Location",
+    },
+  ],
 };
